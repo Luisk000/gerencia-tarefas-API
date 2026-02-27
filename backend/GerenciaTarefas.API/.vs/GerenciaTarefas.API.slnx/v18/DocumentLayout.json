@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|c:\\users\\softadm1\\desktop\\teste-pratico-jabil\\backend\\gerenciatarefas.api\\repository\\tarefasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|solutionrelative:repository\\tarefasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|c:\\users\\softadm1\\desktop\\teste-pratico-jabil\\backend\\gerenciatarefas.api\\controllers\\tarefascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|solutionrelative:controllers\\tarefascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|c:\\users\\softadm1\\desktop\\teste-pratico-jabil\\backend\\gerenciatarefas.api\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|solutionrelative:appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|c:\\users\\softadm1\\desktop\\teste-pratico-jabil\\backend\\gerenciatarefas.api\\models\\prioridadetipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|solutionrelative:models\\prioridadetipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|c:\\users\\softadm1\\desktop\\teste-pratico-jabil\\backend\\gerenciatarefas.api\\models\\statustipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AFAC9A0-0A60-37CB-EF42-5C7F537ED357}|GerenciaTarefas.API.csproj|solutionrelative:models\\statustipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedHeight": 206,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1139089979:0:{71f361cc-493f-47c0-923f-f2570b6f8618}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TarefasRepository.cs",
+              "DocumentMoniker": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Repository\\TarefasRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\TarefasRepository.cs",
+              "ToolTip": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Repository\\TarefasRepository.cs",
+              "RelativeToolTip": "Repository\\TarefasRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T19:57:59.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TarefasController.cs",
+              "DocumentMoniker": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Controllers\\TarefasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TarefasController.cs",
+              "ToolTip": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Controllers\\TarefasController.cs",
+              "RelativeToolTip": "Controllers\\TarefasController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAwwBEAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T19:02:55.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "AppDbContext.cs",
+              "ToolTip": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\AppDbContext.cs",
+              "RelativeToolTip": "AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T12:55:26.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StatusTipo.cs",
+              "DocumentMoniker": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Models\\StatusTipo.cs",
+              "RelativeDocumentMoniker": "Models\\StatusTipo.cs",
+              "ToolTip": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Models\\StatusTipo.cs",
+              "RelativeToolTip": "Models\\StatusTipo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T17:57:08.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PrioridadeTipo.cs",
+              "DocumentMoniker": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Models\\PrioridadeTipo.cs",
+              "RelativeDocumentMoniker": "Models\\PrioridadeTipo.cs",
+              "ToolTip": "C:\\Users\\softadm1\\Desktop\\teste-pratico-jabil\\backend\\GerenciaTarefas.API\\Models\\PrioridadeTipo.cs",
+              "RelativeToolTip": "Models\\PrioridadeTipo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T17:55:40.519Z",
+              "EditorCaption": ""
             }
           ]
         },
