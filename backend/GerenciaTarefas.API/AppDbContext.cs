@@ -7,6 +7,6 @@ namespace GerenciaTarefas.API
     {
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { }
 
-        public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<Tarefa> tarefas { get; set; }
     }
 }
