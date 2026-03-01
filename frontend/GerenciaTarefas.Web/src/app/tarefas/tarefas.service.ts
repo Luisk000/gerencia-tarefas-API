@@ -7,7 +7,7 @@ import { Tarefa } from '../models/tarefa.model';
 })
 export class TarefasService {
 
-  url = 'http://localhost:44353/api/tarefas';
+  url = 'https://localhost:44353/api/tarefas';
   
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,17 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.main > div{
+    background-color:#535353;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    width: 30%;
+}
