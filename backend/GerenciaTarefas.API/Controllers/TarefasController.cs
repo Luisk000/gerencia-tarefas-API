@@ -24,21 +24,21 @@ namespace GerenciaTarefas.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            Tarefa? tarefa = await _tarefasRepository.GetById(id);
+            TarefaDetalhadaDTO? tarefa = await _tarefasRepository.GetById(id);
             if (tarefa == null)
                 return NotFound();
             return Json(tarefa);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Tarefa tarefa)
+        public async Task<IActionResult> Create([FromBody] Tarefa tarefa)
         {
             await _tarefasRepository.Create(tarefa);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Tarefa tarefa)
+        public async Task<IActionResult> Update(int id, [FromBody] Tarefa tarefa)
         {
             bool encontrado = await _tarefasRepository.Update(id, tarefa);
             if (!encontrado)

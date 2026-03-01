@@ -1,8 +1,9 @@
-﻿using GerenciaTarefas.API.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
+﻿using GerenciaTarefas.API.DTOs;
+using GerenciaTarefas.API.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
-using GerenciaTarefas.API.DTOs;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace GerenciaTarefas.API.Repository
 {
@@ -26,10 +27,26 @@ namespace GerenciaTarefas.API.Repository
 
             return tarefas;
         }
-        public async Task<Tarefa?> GetById(int id)
+        public async Task<TarefaDetalhadaDTO?> GetById(int id)
         {
             Tarefa? tarefa = await _context.tarefas.FindAsync(id);
-            return tarefa;
+
+            if (tarefa == null)
+                return null;
+
+            TarefaDetalhadaDTO tarefaDetalhada = new TarefaDetalhadaDTO
+            {
+                id = tarefa.id,
+                titulo = tarefa.titulo,
+                descricao = tarefa.descricao,
+                data_criacao = tarefa.data_criacao,
+                status = tarefa.status.ToString(),
+                prioridade = tarefa.prioridade.ToString(),
+                todos_status = Enum.GetValues<StatusTipo>().Select(s => s.ToString()),
+                todas_prioridades = Enum.GetValues<PrioridadeTipo>().Select(p => p.ToString())
+            };
+
+            return tarefaDetalhada;
         }
 
         public async Task Create(Tarefa tarefa)

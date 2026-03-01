@@ -1,0 +1,23 @@
+<div data-bs-theme="dark">
+<textarea class="descricao form-control form-control-sm" [(ngModel)]="tarefa.descricao">
+    {{ tarefa.descricao }}
+</textarea>
+<div class="dados-tarefa">
+    <div>
+        <span class="tarefa-dado">STATUS</span>
+        <select class="form-control form-control-sm" [(ngModel)]="tarefa.status">
+            <option *ngFor="let status of tarefa.todos_status">{{status}}</option>
+        </select>
+    </div>
+    <div>
+        <span class="tarefa-dado">PRIORIDADE</span>
+        <select class="form-control form-control-sm" [(ngModel)]="tarefa.prioridade">
+            <option *ngFor="let prioridade of tarefa.todas_prioridades">{{prioridade}}</option>
+        </select>
+    </div>
+    <div>
+        <span class="tarefa-dado">DATA DE CRIAÇÃO</span>
+        {{ tarefa.data_criacao | date: 'dd/MM/yyyy' }}
+    </div>
+</div> 
+</div>

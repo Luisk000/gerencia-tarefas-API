@@ -13,5 +13,52 @@
     font-size: 14px;
     border-radius: 5px;
     color: white;
-    width: 30%;
+    width: 45%;
+    height: fit-content;
+}
+
+.tarefa-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo{
+    font-size: 16px;
+    flex: 1;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons > button{
+    font-size: 14px;
+}
+
+.descricao{
+    display: flex;
+    justify-content: center;
+    margin: 15px 0px;
+}
+
+.dados-tarefa{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.dados-tarefa > div{
+    display: flex;
+    gap: 4px;
+}
+
+.tarefa-dado{
+    background-color: #c7c7c7;
+    color: black;
+    font-size: 12px;
+    padding: 2px;
+    border-radius: 3px;
 }

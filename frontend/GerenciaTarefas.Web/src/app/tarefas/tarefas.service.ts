@@ -23,8 +23,14 @@ export class TarefasService {
     return this.http.post(this.url, tarefa);
   }
 
-  update(id: number, tarefa: Tarefa){
-    return this.http.put(this.url + '/' + id, tarefa);
+  update(tarefa: Tarefa){
+    var body = {
+      titulo: tarefa.titulo,
+      descricao: tarefa.descricao,
+      status: tarefa.status,
+      prioridade: tarefa.prioridade
+    }
+    return this.http.put(this.url + '/' + tarefa.id, body);
   }
 
   delete(id: number) {
