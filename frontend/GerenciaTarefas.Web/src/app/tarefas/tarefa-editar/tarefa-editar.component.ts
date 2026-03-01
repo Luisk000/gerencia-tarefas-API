@@ -15,5 +15,14 @@ import { TarefasService } from '../tarefas.service';
 })
 export class TarefaEditar{
   @Input() tarefa!: Tarefa;
+  @Output() cancelaEmit = new EventEmitter();
+  @Output() confirmaEmit = new EventEmitter();
 
+  cancelarEdicao(){
+    this.cancelaEmit.emit();
+  }
+
+  confirmarEdicao(){
+    this.confirmaEmit.emit();
+  }
 }

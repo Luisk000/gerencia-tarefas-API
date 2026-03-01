@@ -1,46 +1,46 @@
 <div class="main">
   <div *ngFor="let tarefa of tarefas">
     <div class="tarefa-header">
-      <div class="titulo" type="button" (click)="getDadosTarefa(tarefa)">{{ tarefa.titulo }}</div>
-      <div *ngIf="selectedTarefa && selectedTarefa.id == tarefa.id">
-        <div class="buttons" *ngIf="!editando && !excluindo">
+      <div
+        *ngIf="!editando || !selectedTarefa || selectedTarefa.id != tarefa.id"
+        class="titulo"
+        type="button"
+        (click)="getDadosTarefa(tarefa)"
+      >
+        {{ tarefa.titulo }}
+      </div>
+      <div *ngIf="!editando && selectedTarefa && selectedTarefa.id == tarefa.id">
+        <div *ngIf="!editando && !excluindo" class="buttons" >
           <button class="btn btn-sm btn-info" (click)="changeEditando()">Editar</button>
           <button class="btn btn-sm btn-danger" (click)="changeExcluindo()">Apagar</button>
         </div>
-        <div class="buttons" *ngIf="editando">
-          <button class="btn btn-sm btn-danger" (click)="changeEditando()">Cancelar</button>
-          <button class="btn btn-sm btn-success" (click)="confirmarEdicao()">Confirmar</button>
-        </div>
-        <div class="buttons" *ngIf="excluindo">
+        <div *ngIf="excluindo" class="buttons">
           <div>Tem certeza?</div>
           <button class="btn btn-sm btn-danger" (click)="changeExcluindo()">Não</button>
           <button class="btn btn-sm btn-success" (click)="deleteTarefa(tarefa)">Sim</button>
         </div>
       </div>
     </div>
-    <div *ngIf="selectedTarefa && selectedTarefa.id == tarefa.id">
-      <div *ngIf="!editando">
-        <div class="descricao">
-          {{ selectedTarefa.descricao }}
-        </div>
-        <div class="dados-tarefa">
-          <div>
-            <span class="tarefa-dado">STATUS</span> {{ selectedTarefa.status }}
-          </div>
-          <div>
-            <span class="tarefa-dado">PRIORIDADE</span> {{ selectedTarefa.prioridade }}
-          </div>
-          <div>
-            <span class="tarefa-dado">DATA DE CRIAÇÃO</span>
-            {{ selectedTarefa.data_criacao | date: 'dd/MM/yyyy' }}
-          </div>
+    <div *ngIf="!editando && selectedTarefa && selectedTarefa.id == tarefa.id">
+      <div class="descricao">
+        {{ selectedTarefa.descricao }}
+      </div>
+      <div class="dados-tarefa">
+        <div><span class="tarefa-dado">STATUS</span> {{ selectedTarefa.status }}</div>
+        <div><span class="tarefa-dado">PRIORIDADE</span> {{ selectedTarefa.prioridade }}</div>
+        <div>
+          <span class="tarefa-dado">DATA DE CRIAÇÃO</span>
+          {{ selectedTarefa.data_criacao | date: 'dd/MM/yyyy' }}
         </div>
       </div>
-      <div *ngIf="editando">
-        <app-tarefa-editar 
-            [tarefa]="selectedTarefa"
-        ></app-tarefa-editar>
-      </div>
+    </div>
+
+    <div *ngIf="editando && selectedTarefa && selectedTarefa.id == tarefa.id">
+      <app-tarefa-editar
+        [tarefa]="selectedTarefa!"
+        (cancelaEmit)="changeEditando()"
+        (confirmaEmit)="confirmarEdicao()"
+      ></app-tarefa-editar>
     </div>
   </div>
 </div>

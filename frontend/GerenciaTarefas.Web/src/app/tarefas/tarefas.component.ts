@@ -66,11 +66,11 @@ export class TarefasComponent implements OnInit{
   }
 
   confirmarEdicao(){
-    console.log(this.selectedTarefa)
     this.tarefasService.update(this.selectedTarefa!).subscribe(() => {
       this.editando = false;
       var index = this.tarefas.findIndex(t => t.id == this.selectedTarefa!.id)
       this.tarefas[index] = this.selectedTarefa!;
+      this.cd.markForCheck();
     })
 
   }
