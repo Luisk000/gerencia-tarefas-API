@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace GerenciaTarefas.API.Models
 {
@@ -7,7 +8,7 @@ namespace GerenciaTarefas.API.Models
         [EnumMember(Value = "pendente")]
         Pendente,
 
-        [EnumMember(Value = "em andamento")]
+        [EnumMember(Value = "em_andamento")]
         EmAndamento,
 
         [EnumMember(Value = "concluido")]

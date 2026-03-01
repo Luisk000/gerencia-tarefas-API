@@ -10,7 +10,7 @@ builder.Services.AddControllers()
     .AddJsonOptions(options =>
      {
          options.JsonSerializerOptions.Converters
-             .Add(new JsonStringEnumMemberConverter());
+             .Add(new JsonStringEnumConverter());
      });
 
 builder.Services.AddScoped<ITarefasRepository, TarefasRepository>();
