@@ -3,5 +3,6 @@
     public interface IMetadataService
     {
         public IEnumerable<string> GetTodosStatus();
+        public IEnumerable<string> GetTodasPrioridades();
     }
 }

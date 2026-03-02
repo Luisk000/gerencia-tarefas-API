@@ -15,10 +15,10 @@ namespace GerenciaTarefas.API.Controllers
         }
 
         [HttpGet]
-        [Route("status")]
-        public async Task<IActionResult> GetTodosStatus()
+        [Route("prioridades")]
+        public async Task<IActionResult> GetPrioridades()
         {
-            IEnumerable<string> todosStatus = _metadataService.GetTodosStatus();
+            IEnumerable<string> todosStatus = _metadataService.GetTodasPrioridades();
             return Json(todosStatus);
         }
     }

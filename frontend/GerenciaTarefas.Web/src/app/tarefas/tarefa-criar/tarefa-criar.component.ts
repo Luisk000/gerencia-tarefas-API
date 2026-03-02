@@ -1,8 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Tarefa } from '../../models/tarefa.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TarefasService } from '../tarefas.service';
+import { TarefasService } from '../../services/tarefas.service';
+import { MetadataService } from '../../services/metadata.service';
 
 @Component({
   selector: 'app-tarefa-criar',
@@ -13,11 +14,23 @@ import { TarefasService } from '../tarefas.service';
     '../tarefas.component.css'
   ],
 })
-export class TarefaCriar {
+export class TarefaCriar implements OnInit{
+
+  @Output() updateEmitter = new EventEmitter();
+
   adicionando = false;
   tarefa: Tarefa = new Tarefa();
+  prioridades: string[] = [];
 
-  constructor(private tarefasService: TarefasService, private cd: ChangeDetectorRef ) { 
+  constructor(
+    private tarefasService: TarefasService,
+    private metadataService: MetadataService
+  ) { }
+
+  ngOnInit(): void {
+    this.metadataService.getPrioridades().subscribe((data) => {
+      this.prioridades = data;
+    })
   }
 
   cancelarAdicao(){
@@ -27,7 +40,7 @@ export class TarefaCriar {
   confirmarAdicao(){
     this.tarefasService.create(this.tarefa).subscribe(() => {
       this.adicionando = false;
-      this.cd.markForCheck();
+      this.updateEmitter.emit();
     });
   }
 }

@@ -1,5 +1,5 @@
 <div class="main" data-bs-theme="dark">
-  <app-tarefa-criar></app-tarefa-criar>
+  <app-tarefa-criar (updateEmitter)="updateCriacao()"></app-tarefa-criar>
   <div *ngFor="let tarefa of tarefas">
     <div class="tarefa-header">
       <div

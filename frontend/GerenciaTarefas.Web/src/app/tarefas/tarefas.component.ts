@@ -1,9 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { TarefasService } from './tarefas.service';
+import { TarefasService } from '../services/tarefas.service';
 import { Tarefa } from '../models/tarefa.model';
 import { CommonModule } from '@angular/common';
 import { TarefaEditar } from './tarefa-editar/tarefa-editar.component';
-import { ToastrService } from 'ngx-toastr';
 import { TarefaCriar } from './tarefa-criar/tarefa-criar.component';
 
 @Component({
@@ -26,6 +25,10 @@ export class TarefasComponent implements OnInit{
   ) { }
 
   ngOnInit(){
+    this.listAll();
+  }
+
+  listAll(){
     this.tarefasService.listAll().subscribe((data) => {
       this.tarefas = data;
       this.cd.markForCheck();
@@ -76,4 +79,7 @@ export class TarefasComponent implements OnInit{
 
   }
 
+  updateCriacao(){
+    this.listAll()
+  }
 }

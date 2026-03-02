@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { Tarefa } from '../../models/tarefa.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TarefasService } from '../tarefas.service';
+import { TarefasService } from '../../services/tarefas.service';
 
 @Component({
   selector: 'app-tarefa-editar',
