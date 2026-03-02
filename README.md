@@ -56,4 +56,7 @@ CREATE TABLE tarefas(
 - No terminal, execute ```dotnet restore``` para restaurar os pacotes NuGet
 - No terminal, execute ```dotnet run``` para abrir o backend em um servidor local, ou clique no botão Executar (IIS Express)
 
+# Vídeo demonstrativo
+
+https://github.com/user-attachments/assets/6d0fe485-1b15-4967-82e6-8eaaa34b28aa
 
