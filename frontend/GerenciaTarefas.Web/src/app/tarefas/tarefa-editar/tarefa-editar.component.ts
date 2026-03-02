@@ -47,7 +47,6 @@ export class TarefaEditar implements OnInit{
       this.tarefaForm.get('status')?.value
     )
     tarefa.id = this.tarefa.id;
-
     this.confirmaEmit.emit(tarefa);
   }
 }
