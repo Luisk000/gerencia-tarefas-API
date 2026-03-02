@@ -1,14 +1,5 @@
-.dados-tarefa div {
-    display: flex;
-    align-items: center;
-}
-
 .descricao{
     height: 100px;
-}
-
-.tarefa-dado{
-    height: fit-content;
 }
 
 .titulo{

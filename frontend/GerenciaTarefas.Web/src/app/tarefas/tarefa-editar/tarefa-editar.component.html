@@ -1,31 +1,28 @@
-<div data-bs-theme="dark">
-  <div class="tarefa-header">
-    <input class="titulo form-control form-control-sm" type="text" [(ngModel)]="tarefa.titulo" />
-    <div class="buttons">
-      <button class="btn btn-sm btn-danger" (click)="cancelarEdicao()">Cancelar</button>
-      <button class="btn btn-sm btn-success" (click)="confirmarEdicao()">Confirmar</button>
-    </div>
+<div class="tarefa-header">
+  <input class="titulo form-control form-control-sm" type="text" [(ngModel)]="tarefa.titulo" />
+  <div class="buttons">
+    <button class="btn btn-sm btn-danger" (click)="cancelarEdicao()">Cancelar</button>
+    <button class="btn btn-sm btn-success" (click)="confirmarEdicao()">Confirmar</button>
   </div>
-  <textarea class="descricao form-control form-control-sm" [(ngModel)]="tarefa.descricao">
+</div>
+<textarea class="descricao form-control form-control-sm" [(ngModel)]="tarefa.descricao">
     {{ tarefa.descricao }}
-</textarea
-  >
-  <div class="dados-tarefa">
-    <div>
-      <span class="tarefa-dado">STATUS</span>
-      <select class="form-control form-control-sm" [(ngModel)]="tarefa.status">
-        <option *ngFor="let status of tarefa.todos_status">{{ status }}</option>
-      </select>
-    </div>
-    <div>
-      <span class="tarefa-dado">PRIORIDADE</span>
-      <select class="form-control form-control-sm" [(ngModel)]="tarefa.prioridade">
-        <option *ngFor="let prioridade of tarefa.todas_prioridades">{{ prioridade }}</option>
-      </select>
-    </div>
-    <div>
-      <span class="tarefa-dado">DATA DE CRIAÇÃO</span>
-      {{ tarefa.data_criacao | date: 'dd/MM/yyyy' }}
-    </div>
+</textarea>
+<div class="dados-tarefa">
+  <div>
+    <span class="dado-tarefa">STATUS</span>
+    <select class="form-control form-control-sm" [(ngModel)]="tarefa.status">
+      <option *ngFor="let status of tarefa.todos_status">{{ status }}</option>
+    </select>
+  </div>
+  <div>
+    <span class="dado-tarefa">PRIORIDADE</span>
+    <select class="form-control form-control-sm" [(ngModel)]="tarefa.prioridade">
+      <option *ngFor="let prioridade of tarefa.todas_prioridades">{{ prioridade }}</option>
+    </select>
+  </div>
+  <div>
+    <span class="dado-tarefa">DATA DE CRIAÇÃO</span>
+    {{ tarefa.data_criacao | date: 'dd/MM/yyyy' }}
   </div>
 </div>

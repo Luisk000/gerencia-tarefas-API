@@ -1,0 +1,29 @@
+<div *ngIf="!adicionando">
+  <div class="tarefa-header">
+    <div class="titulo form-control form-control-sm" (click)="adicionando = true">
+      Adicionar nova tarefa
+    </div>
+  </div>
+</div>
+<div *ngIf="adicionando">
+  <div class="tarefa-header">
+    <input class="titulo form-control form-control-sm" type="text" [(ngModel)]="tarefa.titulo">
+    <div class="buttons">
+      <button class="btn btn-sm btn-danger" (click)="cancelarAdicao()">Cancelar</button>
+      <button class="btn btn-sm btn-success" (click)="confirmarAdicao()">Confirmar</button>
+    </div>
+  </div>
+  <div>
+    <textarea class="descricao form-control form-control-sm" [(ngModel)]="tarefa.descricao">
+        {{ tarefa.descricao }}
+    </textarea>
+    <div class="dados-tarefa">
+      <div>
+        <span class="tarefa-dado">PRIORIDADE</span>
+        <select class="form-control form-control-sm" [(ngModel)]="tarefa.prioridade">
+          <option *ngFor="let prioridade of tarefa.todas_prioridades">{{ prioridade }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

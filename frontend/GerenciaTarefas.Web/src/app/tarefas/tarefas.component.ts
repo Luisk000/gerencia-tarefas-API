@@ -4,10 +4,11 @@ import { Tarefa } from '../models/tarefa.model';
 import { CommonModule } from '@angular/common';
 import { TarefaEditar } from './tarefa-editar/tarefa-editar.component';
 import { ToastrService } from 'ngx-toastr';
+import { TarefaCriar } from './tarefa-criar/tarefa-criar.component';
 
 @Component({
   selector: 'app-tarefas',
-  imports: [CommonModule, TarefaEditar],
+  imports: [CommonModule, TarefaEditar, TarefaCriar],
   templateUrl: './tarefas.component.html',
   styleUrl: './tarefas.component.css',
 })

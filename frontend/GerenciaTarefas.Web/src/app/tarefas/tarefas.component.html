@@ -1,4 +1,5 @@
-<div class="main">
+<div class="main" data-bs-theme="dark">
+  <app-tarefa-criar></app-tarefa-criar>
   <div *ngFor="let tarefa of tarefas">
     <div class="tarefa-header">
       <div
@@ -26,10 +27,10 @@
         {{ selectedTarefa.descricao }}
       </div>
       <div class="dados-tarefa">
-        <div><span class="tarefa-dado">STATUS</span> {{ selectedTarefa.status }}</div>
-        <div><span class="tarefa-dado">PRIORIDADE</span> {{ selectedTarefa.prioridade }}</div>
+        <div><span class="dado-tarefa">STATUS</span> {{ selectedTarefa.status }}</div>
+        <div><span class="dado-tarefa">PRIORIDADE</span> {{ selectedTarefa.prioridade }}</div>
         <div>
-          <span class="tarefa-dado">DATA DE CRIAÇÃO</span>
+          <span class="dado-tarefa">DATA DE CRIAÇÃO</span>
           {{ selectedTarefa.data_criacao | date: 'dd/MM/yyyy' }}
         </div>
       </div>
