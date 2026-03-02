@@ -32,7 +32,7 @@ export class TarefasComponent implements OnInit{
 
   listAll(){
     this.tarefasService.listAll().subscribe((data) => {
-      this.tarefas = data;
+      this.tarefas = data.sort((a, b) => a.id - b.id);
       this.cd.markForCheck();
     })
   }
@@ -94,5 +94,11 @@ export class TarefasComponent implements OnInit{
 
   updateCriacao(){
     this.listAll()
+  }
+
+  closeTarefas(){
+    this.selectedTarefa = null;
+    this.editando = false; 
+    this.excluindo = false
   }
 }

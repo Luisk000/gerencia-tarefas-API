@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 export class TarefaCriar implements OnInit{
 
   @Output() updateEmitter = new EventEmitter();
+  @Output() closeTarefasEmitter = new EventEmitter();
 
   adicionando = false;
   tarefa: Tarefa = new Tarefa();
@@ -36,6 +37,12 @@ export class TarefaCriar implements OnInit{
       console.log(error)   
       this.toastr.error(error.message)
     })
+  }
+
+  startAdicionando(){
+    this.adicionando = true;
+    this.tarefa = new Tarefa();
+    this.closeTarefasEmitter.emit();
   }
 
   cancelarAdicao(){
