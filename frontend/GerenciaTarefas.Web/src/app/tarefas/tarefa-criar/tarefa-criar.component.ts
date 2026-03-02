@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TarefasService } from '../../services/tarefas.service';
 import { MetadataService } from '../../services/metadata.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tarefa-criar',
@@ -24,12 +25,16 @@ export class TarefaCriar implements OnInit{
 
   constructor(
     private tarefasService: TarefasService,
-    private metadataService: MetadataService
+    private metadataService: MetadataService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.metadataService.getPrioridades().subscribe((data) => {
       this.prioridades = data;
+    }, async (error) => {
+      console.log(error)   
+      this.toastr.error(error.message)
     })
   }
 
@@ -41,7 +46,11 @@ export class TarefaCriar implements OnInit{
     this.tarefasService.create(this.tarefa).subscribe(() => {
       this.adicionando = false;
       this.tarefa = new Tarefa();
+      this.toastr.success("Tarefa adicionada")
       this.updateEmitter.emit();
+    }, async (error) => {
+      console.log(error)   
+      this.toastr.error(error.message)
     });
   }
 }

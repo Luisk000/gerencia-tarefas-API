@@ -1,10 +1,13 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+
 import { provideToastr } from 'ngx-toastr';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideToastr()
+    provideToastr({
+      positionClass: 'toast-center-center'
+    })
   ]
 };

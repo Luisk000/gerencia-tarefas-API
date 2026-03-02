@@ -4,6 +4,7 @@ import { Tarefa } from '../models/tarefa.model';
 import { CommonModule } from '@angular/common';
 import { TarefaEditar } from './tarefa-editar/tarefa-editar.component';
 import { TarefaCriar } from './tarefa-criar/tarefa-criar.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tarefas',
@@ -20,7 +21,8 @@ export class TarefasComponent implements OnInit{
   excluindo = false;
 
   constructor(
-    private tarefasService: TarefasService, 
+    private tarefasService: TarefasService,
+    private toastr: ToastrService,
     private cd: ChangeDetectorRef
   ) { }
 
@@ -48,6 +50,9 @@ export class TarefasComponent implements OnInit{
     this.tarefasService.getById(tarefa.id).subscribe((data) => {
       this.selectedTarefa = data;
       this.cd.markForCheck();
+    }, async (error) => {
+      console.log(error)   
+      this.toastr.error(error.message)
     })
   }
 
@@ -65,7 +70,11 @@ export class TarefasComponent implements OnInit{
     this.tarefasService.delete(tarefa.id).subscribe(() => {
       var index = this.tarefas.findIndex(t => t.id == tarefa.id)
       this.tarefas.splice(index, 1)
+      this.toastr.success("Tarefa apagada")
       this.cd.markForCheck();
+    }, async (error) => {
+      console.log(error)   
+      this.toastr.error(error.message)
     })
   }
 
@@ -74,7 +83,11 @@ export class TarefasComponent implements OnInit{
       this.editando = false;
       var index = this.tarefas.findIndex(t => t.id == this.selectedTarefa!.id)
       this.tarefas[index] = this.selectedTarefa!;
+      this.toastr.success("Tarefa atualizada")
       this.cd.markForCheck();
+    }, async (error) => {
+      console.log(error)  
+      this.toastr.error(error.message) 
     })
 
   }
