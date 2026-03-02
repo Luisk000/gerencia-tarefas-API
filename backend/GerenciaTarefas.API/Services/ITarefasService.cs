@@ -8,7 +8,7 @@ namespace GerenciaTarefas.API.Services
         public Task<List<TarefaResumidaDTO>> ListAll();
         public Task<TarefaDetalhadaDTO?> GetById(int id);
         public Task Create(Tarefa tarefa);
-        public Task<bool> Update(int id, Tarefa tarefa);
-        public Task<bool> Delete(int id);
+        public Task Update(int id, Tarefa tarefa);
+        public Task Delete(int id);
     }
 }

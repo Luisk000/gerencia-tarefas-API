@@ -24,11 +24,11 @@ namespace GerenciaTarefas.API.Services
 
             List<TarefaResumidaDTO> tarefasResumidas = tarefas
                 .Select(t => new TarefaResumidaDTO
-                {
-                    Id = t.id,
-                    Titulo = t.titulo
-                })
-                .ToList();
+                    {
+                        Id = t.id,
+                        Titulo = t.titulo
+                    }
+                ).ToList();
 
             return tarefasResumidas;
         }
@@ -37,7 +37,7 @@ namespace GerenciaTarefas.API.Services
             Tarefa? tarefa = await _repository.GetById(id);
 
             if (tarefa == null)
-                return null;
+                throw new KeyNotFoundException("Tarefa não encontrada");
 
             TarefaDetalhadaDTO tarefaDetalhada = new TarefaDetalhadaDTO
             {
@@ -59,12 +59,12 @@ namespace GerenciaTarefas.API.Services
             await _repository.Create(tarefa);
         }
 
-        public async Task<bool> Update(int id, Tarefa tarefa)
+        public async Task Update(int id, Tarefa tarefa)
         {
             Tarefa? tarefaBanco = await _repository.GetById(id);
 
             if (tarefaBanco == null)
-                return false;
+                throw new KeyNotFoundException("Tarefa não encontrada");
 
             tarefaBanco.titulo = tarefa.titulo;
             tarefaBanco.descricao = tarefa.descricao;
@@ -72,18 +72,16 @@ namespace GerenciaTarefas.API.Services
             tarefaBanco.status = tarefa.status;
 
             await _repository.Update(tarefaBanco);
-            return true;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task Delete(int id)
         {
             Tarefa? tarefa = await _repository.GetById(id);
 
             if (tarefa == null)
-                return false;
+                throw new KeyNotFoundException("Tarefa não encontrada");
 
             await _repository.Delete(tarefa);
-            return true;
         }
     }
 }
