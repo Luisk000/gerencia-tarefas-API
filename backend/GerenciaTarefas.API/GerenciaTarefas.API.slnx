@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../GerenciaTarefas.API.Tests/GerenciaTarefas.API.Tests.csproj" Id="657c8186-17f7-44d1-84ec-415394c32745" />
   <Project Path="GerenciaTarefas.API.csproj" />
 </Solution>
