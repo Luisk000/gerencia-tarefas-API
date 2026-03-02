@@ -10,6 +10,6 @@ namespace GerenciaTarefas.API.Models
         public required string descricao { get; set; }
         public StatusTipo status { get; set; }
         public PrioridadeTipo prioridade { get; set; }
-        public DateTime data_criacao { get; set; }  
+        public DateTime? data_criacao { get; set; }  
     }
 }

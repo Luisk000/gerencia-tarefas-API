@@ -40,6 +40,7 @@ export class TarefaCriar implements OnInit{
   confirmarAdicao(){
     this.tarefasService.create(this.tarefa).subscribe(() => {
       this.adicionando = false;
+      this.tarefa = new Tarefa();
       this.updateEmitter.emit();
     });
   }

@@ -44,7 +44,7 @@ namespace GerenciaTarefas.API.Services
                 id = tarefa.id,
                 titulo = tarefa.titulo,
                 descricao = tarefa.descricao,
-                data_criacao = tarefa.data_criacao,
+                data_criacao = (DateTime)tarefa.data_criacao!,
                 status = tarefa.status.ToString(),
                 prioridade = tarefa.prioridade.ToString(),
                 todos_status = _metadataService.GetTodosStatus(),
