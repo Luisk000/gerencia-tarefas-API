@@ -1,6 +1,7 @@
 ﻿using GerenciaTarefas.API.DTOs;
 using GerenciaTarefas.API.Models;
 using GerenciaTarefas.API.Repository;
+using GerenciaTarefas.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciaTarefas.API.Controllers
@@ -8,23 +9,23 @@ namespace GerenciaTarefas.API.Controllers
     [Route("api/[controller]")]
     public class TarefasController: Controller
     {
-        private readonly ITarefasRepository _tarefasRepository;
-        public TarefasController(ITarefasRepository tarefasRepository)
+        private readonly ITarefasService _service;
+        public TarefasController(ITarefasService service)
         {
-            _tarefasRepository = tarefasRepository;
+            _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> ListAll()
         {
-            List<TarefaResumidaDTO> tarefas = await _tarefasRepository.ListAll();
+            List<TarefaResumidaDTO> tarefas = await _service.ListAll();
             return Json(tarefas);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            TarefaDetalhadaDTO? tarefa = await _tarefasRepository.GetById(id);
+            TarefaDetalhadaDTO? tarefa = await _service.GetById(id);
             if (tarefa == null)
                 return NotFound();
             return Json(tarefa);
@@ -33,14 +34,14 @@ namespace GerenciaTarefas.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Tarefa tarefa)
         {
-            await _tarefasRepository.Create(tarefa);
+            await _service.Create(tarefa);
             return Ok();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] Tarefa tarefa)
         {
-            bool encontrado = await _tarefasRepository.Update(id, tarefa);
+            bool encontrado = await _service.Update(id, tarefa);
             if (!encontrado)
                 return NotFound();
             return Ok();
@@ -49,7 +50,7 @@ namespace GerenciaTarefas.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            bool encontrado = await _tarefasRepository.Delete(id);
+            bool encontrado = await _service.Delete(id);
             if (!encontrado)
                 return NotFound();
             return Ok();

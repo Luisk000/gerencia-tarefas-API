@@ -1,6 +1,7 @@
 using GerenciaTarefas.API;
 using GerenciaTarefas.API.Models;
 using GerenciaTarefas.API.Repository;
+using GerenciaTarefas.API.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -13,7 +14,9 @@ builder.Services.AddControllers()
              .Add(new JsonStringEnumConverter());
      });
 
+builder.Services.AddScoped<ITarefasService, TarefasService>();
 builder.Services.AddScoped<ITarefasRepository, TarefasRepository>();
+builder.Services.AddSingleton<IMetadataService, MetadataService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("PostgreConnection"),
@@ -43,6 +46,5 @@ app.UseAuthorization();
 app.UseCors("AllowAll");
 
 app.MapControllers();
-
 
 app.Run();
