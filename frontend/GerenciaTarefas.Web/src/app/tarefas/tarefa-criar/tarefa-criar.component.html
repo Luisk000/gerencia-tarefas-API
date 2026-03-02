@@ -5,25 +5,25 @@
     </b>
   </div>
 </div>
-<div *ngIf="adicionando">
+<form [formGroup]="tarefaForm" (ngSubmit)="confirmarAdicao()" *ngIf="adicionando">
   <div class="tarefa-header">
-    <input class="titulo form-control form-control-sm" type="text" [(ngModel)]="tarefa.titulo" placeholder="Titulo">
+    <input class="titulo form-control form-control-sm" type="text" formControlName="titulo" placeholder="Titulo">
     <div class="buttons">
-      <button class="btn btn-sm btn-danger" (click)="cancelarAdicao()">Cancelar</button>
-      <button class="btn btn-sm btn-success" (click)="confirmarAdicao()">Confirmar</button>
+      <button class="btn btn-sm btn-danger" type="button" (click)="cancelarAdicao()">Cancelar</button>
+      <button class="btn btn-sm btn-success" type="submit" [disabled]="!tarefaForm.valid">Confirmar</button>
     </div>
   </div>
   <div>
-    <textarea class="descricao form-control form-control-sm" [(ngModel)]="tarefa.descricao" placeholder="Descrição">
-        {{ tarefa.descricao }}
+    <textarea class="descricao form-control form-control-sm" formControlName="descricao" placeholder="Descrição">
     </textarea>
     <div class="dados-tarefa">
       <div>
         <span class="dado-tarefa">PRIORIDADE</span>
-        <select class="form-control form-control-sm" [(ngModel)]="tarefa.prioridade">
+        <select class="form-control form-control-sm" formControlName="prioridade">
+          <option selected></option>
           <option *ngFor="let prioridade of prioridades">{{ prioridade }}</option>
         </select>
       </div>
     </div>
   </div>
-</div>
+</form>
