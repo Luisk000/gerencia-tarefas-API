@@ -32,6 +32,7 @@ namespace GerenciaTarefas.API.Services
 
             return tarefasResumidas;
         }
+
         public async Task<TarefaDetalhadaDTO?> GetById(int id)
         {
             Tarefa? tarefa = await _repository.GetById(id);
