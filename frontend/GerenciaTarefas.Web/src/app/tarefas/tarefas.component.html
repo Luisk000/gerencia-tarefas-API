@@ -43,7 +43,7 @@
       <app-tarefa-editar
         [tarefa]="selectedTarefa!"
         (cancelaEmit)="changeEditando()"
-        (confirmaEmit)="confirmarEdicao()"
+        (confirmaEmit)="confirmarEdicao($event)"
       ></app-tarefa-editar>
     </div>
   </div>

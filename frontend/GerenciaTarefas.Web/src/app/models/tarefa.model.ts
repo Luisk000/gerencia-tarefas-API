@@ -9,9 +9,10 @@ export class Tarefa {
     todos_status: string[] = [];
     todas_prioridades: string[] = [];
 
-    constructor(titulo: string, descricao: string, prioridade: string){
+    constructor(titulo: string, descricao: string, prioridade: string, status?: string){
         this.titulo = titulo;
         this.descricao = descricao;
         this.prioridade = prioridade;
+        this.status = status;
     }
 }

@@ -78,11 +78,10 @@ export class TarefasComponent implements OnInit{
     })
   }
 
-  confirmarEdicao(){
-    this.tarefasService.update(this.selectedTarefa!).subscribe(() => {
+  confirmarEdicao(tarefa: Tarefa){
+    this.tarefasService.update(tarefa).subscribe(() => {
       this.editando = false;
-      var index = this.tarefas.findIndex(t => t.id == this.selectedTarefa!.id)
-      this.tarefas[index] = this.selectedTarefa!;
+      this.listAll()
       this.toastr.success("Tarefa atualizada")
       this.cd.markForCheck();
     }, async (error) => {
