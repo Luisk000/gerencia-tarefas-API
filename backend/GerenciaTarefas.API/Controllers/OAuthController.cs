@@ -9,6 +9,9 @@ namespace GerenciaTarefas.API.Controllers
     [Route("api/[controller]")]
     public class OAuthController: Controller
     {
+        private static readonly IConfigurationRoot configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
+
         private readonly IOauthService _service;
         public OAuthController(IOauthService service)
         {
@@ -18,8 +21,8 @@ namespace GerenciaTarefas.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAcessToken()
         {
-            string client_id = Request.Headers["client_id"]!;
-            string client_secret = Request.Headers["client_secret"]!;
+            string client_id = configuration["Authentication:client_id"]!;
+            string client_secret = configuration["Authentication:client_secret"]!;
 
             string token = await _service.GetTokenAcess(client_id, client_secret);
             return Json(token);

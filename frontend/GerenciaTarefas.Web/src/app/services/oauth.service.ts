@@ -10,10 +10,6 @@ export class OAuthService {
   constructor(private http: HttpClient) { }
 
   getAcessToken(){
-    const headers = new HttpHeaders({
-        'client_id': '',
-        'client_secret': '',
-    });
-    return this.http.get<string>(this.url, { headers });
+    return this.http.get<string>(this.url);
   }
 }

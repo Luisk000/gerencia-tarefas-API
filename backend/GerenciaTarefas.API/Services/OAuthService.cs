@@ -27,7 +27,7 @@ namespace GerenciaTarefas.API.Services
                     new ("grant_type", "client_credentials"),
                     new ("client_id", client_id),
                     new ("client_secret", client_secret),
-                    new ("scope", "api://a43f5571-252f-4ac1-84a5-e026f88922eb/.default")
+                    new ("scope", "api://08b23737-7017-4d00-9e68-3aa3be3ec63e/.default")
                 };
 
                 response = await SendRequest(collection);
