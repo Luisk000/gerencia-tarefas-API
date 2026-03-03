@@ -10,9 +10,6 @@ export class MetadataService {
   constructor(private http: HttpClient) { }
 
   getPrioridades(){
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    })
-    return this.http.get<string[]>(this.url + "/prioridades", { headers });
+    return this.http.get<string[]>(this.url + "/prioridades");
   }
 }
