@@ -21,11 +21,23 @@ namespace GerenciaTarefas.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAcessToken()
         {
-            string client_id = configuration["Authentication:client_id"]!;
-            string client_secret = configuration["Authentication:client_secret"]!;
+            try
+            {
+                string client_id = configuration["Authentication:client_id"]!;
+                string client_secret = configuration["Authentication:client_secret"]!;
 
-            string token = await _service.GetTokenAcess(client_id, client_secret);
-            return Json(token);
+                string token = await _service.GetTokenAcess(client_id, client_secret);
+                return Json(token);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Unauthorized();
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
+
         }
     }
 }

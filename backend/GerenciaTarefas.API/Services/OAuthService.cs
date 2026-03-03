@@ -20,9 +20,7 @@ namespace GerenciaTarefas.API.Services
         public async Task<string> GetTokenAcess(string client_id, string client_secret)
         {
             var response = new HttpResponseMessage();
-            try
-            {
-                var collection = new List<KeyValuePair<string, string>>
+            var collection = new List<KeyValuePair<string, string>>
                 {
                     new ("grant_type", "client_credentials"),
                     new ("client_id", client_id),
@@ -30,18 +28,13 @@ namespace GerenciaTarefas.API.Services
                     new ("scope", "api://08b23737-7017-4d00-9e68-3aa3be3ec63e/.default")
                 };
 
-                response = await SendRequest(collection);
+            response = await SendRequest(collection);
 
-                string auth = await response.Content.ReadAsStringAsync();
-                using var doc = JsonDocument.Parse(auth);
+            string auth = await response.Content.ReadAsStringAsync();
+            using var doc = JsonDocument.Parse(auth);
 
-                string token = doc.RootElement.GetProperty("access_token").GetString()!;
-                return token;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            string token = doc.RootElement.GetProperty("access_token").GetString()!;
+            return token;
         }
 
         private async Task<HttpResponseMessage> SendRequest(List<KeyValuePair<string, string>> collection)
@@ -50,7 +43,15 @@ namespace GerenciaTarefas.API.Services
             request.Content = new FormUrlEncodedContent(collection);
 
             var response = await _httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                throw new UnauthorizedAccessException(ex.Message);
+            }
+            
             return response;
         }
     }

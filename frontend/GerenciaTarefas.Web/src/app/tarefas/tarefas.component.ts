@@ -34,6 +34,9 @@ export class TarefasComponent implements OnInit{
       localStorage.setItem('token', accessToken);
       this.carregouToken = true;
       this.listAll();
+    }, async (error) => {
+      console.log(error)   
+      this.toastr.error(error.message)
     })
   }
 
@@ -41,6 +44,9 @@ export class TarefasComponent implements OnInit{
     this.tarefasService.listAll().subscribe((data) => {
       this.tarefas = data.sort((a, b) => a.id - b.id);
       this.cd.markForCheck();
+    }, async (error) => {
+      console.log(error)   
+      this.toastr.error(error.message)
     })
   }
 
