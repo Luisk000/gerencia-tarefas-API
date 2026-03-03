@@ -48,14 +48,15 @@ CREATE TABLE tarefas(
 
 - Abra frontend/GerenciaTarefas.Web em uma IDE, de preferência o Visual Studio Code
 - No terminal, execute ```npm install``` para instalar todas as dependências
-- Então execute ```ng serve -o``` para abrir o frontend em um servidor local
+- Então execute ```ng serve -o``` para abrir a aplicação em um servidor local
 
 ## 3. Execução do backend
 
 - Abra o projeto backend/GerenciaTarefas.API, de preferência com Visual Studio 
 - No terminal, execute ```dotnet restore``` para restaurar os pacotes NuGet
-- No terminal, execute ```dotnet run``` para abrir o backend em um servidor local, ou clique no botão Executar (IIS Express)
 - Em backend/GerenciaTarefas.API/appsettings.json, no campo ConnectionStrings -> PostgreConnection, substitua Host e Password pelos Host e Password configurados no seu PostgreSQL
+- Ainda em appsettings.json, em Authentication -> client_secret, adicione o token recebido pelo desenvolvedor
+- No terminal, execute ```dotnet run``` para abrir o backend em um servidor local, ou clique no botão Executar (IIS Express)
 
 # Vídeo demonstrativo
 
