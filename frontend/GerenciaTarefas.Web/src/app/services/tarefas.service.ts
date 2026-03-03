@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tarefa } from '../models/tarefa.model';
 
@@ -12,15 +12,24 @@ export class TarefasService {
   constructor(private http: HttpClient) { }
 
   listAll() {
-    return this.http.get<Tarefa[]>(this.url);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get<Tarefa[]>(this.url, { headers });
   }
 
   getById(id: number) {
-    return this.http.get<Tarefa>(this.url + '/' + id);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get<Tarefa>(this.url + '/' + id, { headers });
   }
 
   create(tarefa: Tarefa) {
-    return this.http.post(this.url, tarefa);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.post(this.url, tarefa, { headers });
   }
 
   update(tarefa: Tarefa){
@@ -30,10 +39,16 @@ export class TarefasService {
       status: tarefa.status,
       prioridade: tarefa.prioridade
     }
-    return this.http.put(this.url + '/' + tarefa.id, body);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.put(this.url + '/' + tarefa.id, body, { headers }  );
   }
 
   delete(id: number) {
-    return this.http.delete(this.url + '/' + id);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.delete(this.url + '/' + id, { headers });
   }
 }

@@ -2,10 +2,12 @@
 using GerenciaTarefas.API.Models;
 using GerenciaTarefas.API.Repository;
 using GerenciaTarefas.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciaTarefas.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class TarefasController: Controller
     {

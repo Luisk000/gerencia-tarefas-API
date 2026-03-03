@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,6 +10,9 @@ export class MetadataService {
   constructor(private http: HttpClient) { }
 
   getPrioridades(){
-    return this.http.get<string[]>(this.url + "/prioridades")
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get<string[]>(this.url + "/prioridades", { headers });
   }
 }

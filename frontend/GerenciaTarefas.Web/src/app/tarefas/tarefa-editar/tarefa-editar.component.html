@@ -5,7 +5,7 @@
       <button class="btn btn-sm btn-danger" type="button" (click)="cancelarEdicao()">
         Cancelar
       </button>
-      <button class="btn btn-sm btn-success" type="submit">Confirmar</button>
+      <button class="btn btn-sm btn-success" type="submit" [disabled]="!tarefaForm.valid">Confirmar</button>
     </div>
   </div>
   <textarea class="descricao form-control form-control-sm" formControlName="descricao">

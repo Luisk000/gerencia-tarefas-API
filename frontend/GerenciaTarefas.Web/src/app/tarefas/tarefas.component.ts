@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TarefaEditar } from './tarefa-editar/tarefa-editar.component';
 import { TarefaCriar } from './tarefa-criar/tarefa-criar.component';
 import { ToastrService } from 'ngx-toastr';
+import { OAuthService } from '../services/oauth.service';
 
 @Component({
   selector: 'app-tarefas',
@@ -19,15 +20,21 @@ export class TarefasComponent implements OnInit{
   adicionando = false;
   editando = false;
   excluindo = false;
+  carregouToken = false;
 
   constructor(
+    private oAuthService: OAuthService,
     private tarefasService: TarefasService,
     private toastr: ToastrService,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(){
-    this.listAll();
+    this.oAuthService.getAcessToken().subscribe((accessToken) => {
+      localStorage.setItem('token', accessToken);
+      this.carregouToken = true;
+      this.listAll();
+    })
   }
 
   listAll(){
