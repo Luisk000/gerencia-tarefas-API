@@ -57,6 +57,15 @@ namespace GerenciaTarefas.API.Services
 
         public async Task Create(Tarefa tarefa)
         {
+            if (tarefa == null)
+                throw new ArgumentNullException(nameof(tarefa));
+
+            if (string.IsNullOrWhiteSpace(tarefa.titulo))
+                throw new ArgumentException("Título é obrigatório", nameof(tarefa.titulo));
+
+            if (string.IsNullOrWhiteSpace(tarefa.descricao))
+                throw new ArgumentException("Descrição é obrigatória", nameof(tarefa.descricao));
+
             await _repository.Create(tarefa);
         }
 
@@ -65,7 +74,13 @@ namespace GerenciaTarefas.API.Services
             Tarefa? tarefaBanco = await _repository.GetById(id);
 
             if (tarefaBanco == null)
-                throw new KeyNotFoundException("Tarefa não encontrada");
+                throw new KeyNotFoundException(nameof(tarefa));
+
+            if (string.IsNullOrWhiteSpace(tarefa.titulo))
+                throw new ArgumentException("Título é obrigatório", nameof(tarefa.titulo));
+
+            if (string.IsNullOrWhiteSpace(tarefa.descricao))
+                throw new ArgumentException("Descrição é obrigatória", nameof(tarefa.descricao));
 
             tarefaBanco.titulo = tarefa.titulo;
             tarefaBanco.descricao = tarefa.descricao;
