@@ -5,10 +5,10 @@ Esta aplicação consiste em uma tela de gerenciamento de tarefas, onde cada tar
 # Objetivo
 
 Este projeto busca aplicar os conhecimentos relacionados aos seguintes conceitos:
--Responsividade
--Autenticação JWT
--Arquitetura Limpa
--Testes Unitários
+- Responsividade
+- Autenticação JWT
+- Arquitetura Limpa
+- Testes Unitários
 
 # Pré-requisitos
 
