@@ -31,7 +31,44 @@ namespace GerenciaTarefas.API.Tests
             Assert.Equal(tarefaBanco.descricao, tarefa.descricao);
             Assert.Equal(tarefaBanco.prioridade, tarefa.prioridade);
         }
-        
+
+        [Fact]
+        public async Task Create_WhenNull_ShouldNotSucceed()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                 .UseInMemoryDatabase("TestDb")
+                 .Options;
+
+            using var context = new AppDbContext(options);
+            var repository = new TarefasRepository(context);
+
+            await Assert.ThrowsAsync<NullReferenceException>(async () =>
+                await repository.Create(null)
+            );
+        }
+
+        [Fact]
+        public async Task Create_WhenPropertyNull_ShouldNotSucceed()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                 .UseInMemoryDatabase("TestDb")
+                 .Options;
+
+            using var context = new AppDbContext(options);
+            var repository = new TarefasRepository(context);
+
+            var tarefa = new Tarefa
+            {
+                titulo = null,
+                descricao = "Descricao Teste",
+                prioridade = PrioridadeTipo.Alta
+            };
+
+            await Assert.ThrowsAsync<DbUpdateException>(async () =>
+                await repository.Create(tarefa)
+            );
+        }
+
         [Fact]
         public async Task GetById_WhenExists_ShouldReturnTarefas()
         {
@@ -118,6 +155,28 @@ namespace GerenciaTarefas.API.Tests
 
             var tarefaApagada = await context.tarefas.FindAsync(tarefa.id);
             Assert.Null(tarefaApagada);
+        }
+
+        [Fact]
+        public async Task Delete_WhenNotAdded_ShouldNotSucceed()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                 .UseInMemoryDatabase("TestDb")
+                 .Options;
+
+            using var context = new AppDbContext(options);
+            var repository = new TarefasRepository(context);
+
+            var tarefa = new Tarefa
+            {
+                titulo = "Teste",
+                descricao = "Descricao Teste",
+                prioridade = PrioridadeTipo.Alta
+            };
+
+            await Assert.ThrowsAsync<DbUpdateConcurrencyException>(async () =>
+                await repository.Delete(tarefa)
+            );
         }
     }
 }
