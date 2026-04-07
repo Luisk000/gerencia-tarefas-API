@@ -1,4 +1,4 @@
-
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { TarefasComponent } from './tarefas.component';
 import { OAuthService } from '../services/oauth.service';
 import { TarefasService } from '../services/tarefas.service';
@@ -10,46 +10,39 @@ import { of, throwError } from 'rxjs';
 
 describe("TarefasComponent", () => {
     let component: TarefasComponent;
-    let fixture: ComponentFixture<TarefasComponent>;
 
     let oAuthServiceMock = {
-        getAcessToken: jest.fn().mockReturnValue(of("token123"))
+        getAcessToken: vi.fn().mockReturnValue(of("token123"))
     }
 
     let tarefasServiceMock = {
-        listAll: jest.fn(),
-        getById: jest.fn().mockImplementation((id) => {
+        listAll: vi.fn().mockReturnValue(of([])),
+        getById: vi.fn().mockImplementation((id) => {
             return of(new Tarefa("Titulo1", "Descricao1", "Baixa"));
         }),
-        create: jest.fn(),
-        update: jest.fn(),
-        delete: jest.fn()
+        create: vi.fn(),
+        update: vi.fn(),
+        delete: vi.fn()
     }
 
     let toastrMock = {
-        success: jest.fn(),
-        error: jest.fn()
+        success: vi.fn(),
+        error: vi.fn()
     }
 
     let changeDetectionMock = {
-        markForCheck: jest.fn()
+        markForCheck: vi.fn()
     }
 
     beforeEach(async () => { 
-        jest.clearAllMocks();
+        vi.clearAllMocks();
 
-        await TestBed.configureTestingModule({
-            declarations: [TarefasComponent],
-            providers: [
-                { provide: OAuthService, useValue: oAuthServiceMock},
-                { provide: TarefasService, useValue: tarefasServiceMock},
-                { provide: ToastrService, useValue: toastrMock},
-                { provide: ChangeDetectorRef, useValue: changeDetectionMock},
-            ]
-        }).compileComponents()
-        
-        fixture = TestBed.createComponent(TarefasComponent)
-        component = fixture.componentInstance
+        component = new TarefasComponent(
+            oAuthServiceMock as any,
+            tarefasServiceMock as any,
+            toastrMock as any,
+            changeDetectionMock as any
+        )
     })
 
     describe("ngOnInit", () => {
@@ -71,7 +64,7 @@ describe("TarefasComponent", () => {
             })
 
             it ("should set 'token' as the acessToken in the localStorage", () => {
-                jest.spyOn(Storage.prototype, 'setItem');
+                vi.spyOn(Storage.prototype, 'setItem');
 
                 component.ngOnInit();
 
@@ -79,7 +72,7 @@ describe("TarefasComponent", () => {
             })
 
             it ("should call listAll", () => {
-                const listAllSpy = jest.spyOn(component, "listAll")
+                const listAllSpy = vi.spyOn(component, "listAll")
 
                 component.ngOnInit();
 
@@ -89,7 +82,7 @@ describe("TarefasComponent", () => {
 
         describe("service returns error", () => {
             it ("should call handleError", () => {
-                const handleErrorSpy = jest.spyOn(component, "handleError")
+                const handleErrorSpy = vi.spyOn(component, "handleError")
                 oAuthServiceMock.getAcessToken.mockReturnValue(
                     throwError(() => new Error("error"))
                 )
@@ -102,43 +95,15 @@ describe("TarefasComponent", () => {
     })
 
     describe("handleError", () => {
-        const handleErrorSpy = jest.spyOn(component, "handleError")
-        const erro = new Error("Erro1")
+        it ("should call handleError with the error", () => {
+            const handleErrorSpy = vi.spyOn(component, "handleError")
+            const erro = new Error("Erro1")
 
-        component.handleError(erro)
+            component.handleError(erro)
 
-        expect(handleErrorSpy).toHaveBeenCalledWith(erro)
+            expect(handleErrorSpy).toHaveBeenCalledWith(erro)
+        })      
     })
 
-    describe("listAll", () => {
-        
-    })
-
-    describe("getDadosTarefa", () => {
-
-    })
-
-    describe("changeEditando", () => {
-        
-    })
-
-    describe("changeExcluindo", () => {
-        
-    })
-
-    describe("deleteTarefa", () => {
-        
-    })
-
-    describe("confirmarEdicao", () => {
-        
-    })
-
-    describe("updateCriacao", () => {
-        
-    })
-
-    describe("closeTarefas", () => {
-        
-    })
+    
 })
