@@ -8,6 +8,10 @@
       "vitest/globals"
     ]
   },
+  "types": [
+	"jest",
+	"node"
+  ],
   "include": [
     "src/**/*.d.ts",
     "src/**/*.spec.ts"

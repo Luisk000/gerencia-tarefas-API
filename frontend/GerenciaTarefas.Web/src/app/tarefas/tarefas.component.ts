@@ -30,24 +30,24 @@ export class TarefasComponent implements OnInit{
   ) { }
 
   ngOnInit(){
-    this.oAuthService.getAcessToken().subscribe((accessToken) => {
-      localStorage.setItem('token', accessToken);
-      this.carregouToken = true;
-      this.listAll();
-    }, async (error) => {
-      console.log(error)   
-      this.toastr.error(error.message)
-    })
+    this.oAuthService.getAcessToken().subscribe(
+      (accessToken) => {
+        localStorage.setItem('token', accessToken);
+        this.carregouToken = true;
+        this.listAll();
+      }, (error) => this.handleError(error))
+  }
+
+  handleError(error: any){
+    console.log(error)   
+    this.toastr.error(error.message)
   }
 
   listAll(){
     this.tarefasService.listAll().subscribe((data) => {
       this.tarefas = data.sort((a, b) => a.id - b.id);
       this.cd.markForCheck();
-    }, async (error) => {
-      console.log(error)   
-      this.toastr.error(error.message)
-    })
+    }, (error) => this.handleError(error))
   }
 
   getDadosTarefa(tarefa: Tarefa){
@@ -63,10 +63,7 @@ export class TarefasComponent implements OnInit{
     this.tarefasService.getById(tarefa.id).subscribe((data) => {
       this.selectedTarefa = data;
       this.cd.markForCheck();
-    }, async (error) => {
-      console.log(error)   
-      this.toastr.error(error.message)
-    })
+    }, (error) => this.handleError(error))
   }
 
   changeEditando(){
@@ -85,10 +82,7 @@ export class TarefasComponent implements OnInit{
       this.tarefas.splice(index, 1)
       this.toastr.success("Tarefa apagada")
       this.cd.markForCheck();
-    }, async (error) => {
-      console.log(error)   
-      this.toastr.error(error.message)
-    })
+    }, (error) => this.handleError(error))
   }
 
   confirmarEdicao(tarefa: Tarefa){
@@ -99,10 +93,7 @@ export class TarefasComponent implements OnInit{
       this.tarefas[index] = tarefa;
       this.toastr.success("Tarefa atualizada")
       this.cd.markForCheck();
-    }, async (error) => {
-      console.log(error)  
-      this.toastr.error(error.message) 
-    })
+    }, (error) => this.handleError(error))
 
   }
 
