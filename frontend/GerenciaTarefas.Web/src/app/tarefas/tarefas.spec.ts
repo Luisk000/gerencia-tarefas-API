@@ -1,9 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { TarefasComponent } from './tarefas.component';
 import { OAuthService } from '../services/oauth.service';
 import { TarefasService } from '../services/tarefas.service';
 import { ToastrService } from 'ngx-toastr';
 import { ChangeDetectorRef } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Tarefa } from '../models/tarefa.model';
 import { of, throwError } from 'rxjs';
 
@@ -98,5 +99,46 @@ describe("TarefasComponent", () => {
                 expect(handleErrorSpy).toHaveBeenCalled()
             })
         })    
+    })
+
+    describe("handleError", () => {
+        const handleErrorSpy = jest.spyOn(component, "handleError")
+        const erro = new Error("Erro1")
+
+        component.handleError(erro)
+
+        expect(handleErrorSpy).toHaveBeenCalledWith(erro)
+    })
+
+    describe("listAll", () => {
+        
+    })
+
+    describe("getDadosTarefa", () => {
+
+    })
+
+    describe("changeEditando", () => {
+        
+    })
+
+    describe("changeExcluindo", () => {
+        
+    })
+
+    describe("deleteTarefa", () => {
+        
+    })
+
+    describe("confirmarEdicao", () => {
+        
+    })
+
+    describe("updateCriacao", () => {
+        
+    })
+
+    describe("closeTarefas", () => {
+        
     })
 })
