@@ -54,12 +54,12 @@ export class TarefasComponent implements OnInit{
     this.editando = false;
     this.excluindo = false;
 
-    if (this.selectedTarefa && this.selectedTarefa.id === tarefa.id){
+    if (this.selectedTarefa?.id === tarefa.id){
       this.selectedTarefa = null;
       return;
     }
 
-    this.selectedTarefa = tarefa;
+    //this.selectedTarefa = tarefa;
     this.tarefasService.getById(tarefa.id).subscribe((data) => {
       this.selectedTarefa = data;
       this.cd.markForCheck();
@@ -95,10 +95,6 @@ export class TarefasComponent implements OnInit{
       this.cd.markForCheck();
     }, (error) => this.handleError(error))
 
-  }
-
-  updateCriacao(){
-    this.listAll()
   }
 
   closeTarefas(){

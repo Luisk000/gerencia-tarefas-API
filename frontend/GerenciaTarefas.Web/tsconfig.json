@@ -22,9 +22,7 @@
     "strictTemplates": true,
   },
   "files": [],
-  "types": [
-    "jest"
-  ],
+  "types": [],
   "references": [
     {
       "path": "./tsconfig.app.json"
