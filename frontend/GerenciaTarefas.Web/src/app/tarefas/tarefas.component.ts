@@ -97,6 +97,10 @@ export class TarefasComponent implements OnInit{
 
   }
 
+  updateCriacao(){ 
+    this.listAll() 
+  }
+
   closeTarefas(){
     this.selectedTarefa = null;
     this.editando = false; 
